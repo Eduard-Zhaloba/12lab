@@ -1,5 +1,7 @@
 package org.example.task1;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 /**
@@ -9,8 +11,9 @@ public final class Task1Demo {
     private Task1Demo() {
     }
 
-    public static void main(String[] args) {
+    public static void run() {
         Locale.setDefault(Locale.ROOT);
+        log("Розпочато складання структури вантажу літака");
 
         Aircraft aircraft = new Aircraft("Літак");
 
@@ -46,21 +49,25 @@ public final class Task1Demo {
         aircraft.add(compartment1);
         aircraft.add(compartment2);
 
-        System.out.println("=== СТРУКТУРА ЗАВАНТАЖЕННЯ ЛІТАКА ===");
+        System.out.println("\n=== СТРУКТУРА ЗАВАНТАЖЕННЯ ЛІТАКА ===");
         aircraft.printTree("");
 
-        System.out.println();
-        System.out.println("=== ПІДСУМКИ ===");
+        System.out.println("\n=== ПІДСУМКИ ===");
         printSummary(aircraft);
         printSummary(compartment1);
 
-        System.out.println();
-        System.out.println("=== ПЕРЕВІРКА ОДНАКОВОГО ІНТЕРФЕЙСУ ===");
+        System.out.println("\n=== ПЕРЕВІРКА ОДНАКОВОГО ІНТЕРФЕЙСУ ===");
         Cargo selectedNode = compartment2;
         System.out.printf(
                 "Виклик getWeight() для вузла \"%s\": %.2f кг%n",
                 selectedNode.getName(), selectedNode.getWeight()
         );
+        log("Завершення демонстрації Завдання 1");
+    }
+
+    private static void log(String event) {
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.printf("[%s] [Task1Demo] %s%n", time, event);
     }
 
     private static void printSummary(Cargo cargo) {

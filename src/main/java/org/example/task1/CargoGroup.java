@@ -1,5 +1,7 @@
 package org.example.task1;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.IdentityHashMap;
@@ -42,12 +44,14 @@ public abstract class CargoGroup implements Cargo {
             }
         }
         children.add(cargo);
+        log("Додано вузол '" + cargo.getName() + "' до групи '" + this.getName() + "'");
     }
 
     public final boolean remove(Cargo cargo) {
         for (int i = 0; i < children.size(); i++) {
             if (children.get(i) == cargo) {
                 children.remove(i);
+                log("Вилучено вузол '" + cargo.getName() + "' з групи '" + this.getName() + "'");
                 return true;
             }
         }
@@ -85,6 +89,11 @@ public abstract class CargoGroup implements Cargo {
         for (Cargo child : children) {
             child.printTree(indent + "  ");
         }
+    }
+
+    private void log(String event) {
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.printf("[%s] [CargoGroup] %s%n", time, event);
     }
 
     private static boolean containsIdentity(

@@ -1,5 +1,7 @@
 package org.example.task1;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -19,6 +21,7 @@ public abstract class AbstractCargo implements Cargo {
             throw new IllegalArgumentException("Вага має бути скінченним невід'ємним числом");
         }
         this.weight = weight;
+        log("Створено окремий вантаж: " + this.name + " (" + this.weight + " кг)");
     }
 
     @Override
@@ -43,5 +46,10 @@ public abstract class AbstractCargo implements Cargo {
                 "%s- %s | вага: %.2f кг | місць: %d%n",
                 indent, name, getWeight(), getPieceCount()
         );
+    }
+
+    private void log(String event) {
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.printf("[%s] [AbstractCargo] %s%n", time, event);
     }
 }
