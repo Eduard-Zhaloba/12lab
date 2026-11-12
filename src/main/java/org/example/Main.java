@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.task1.Task1Demo;
 import org.example.task2.Task2Demo;
+import org.example.task3.DemoTask3;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,7 +24,5 @@ public class Main {
         Task2Demo.run();
     }
 
-    public static void runTask3() {
-        // Код виклику Task3Demo додамо пізніше
-    }
+    public static void runTask3() { DemoTask3.run(); }
 }

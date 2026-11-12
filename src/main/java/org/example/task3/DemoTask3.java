@@ -1,0 +1,34 @@
+package org.example.task3;
+
+public final class DemoTask3 {
+    private DemoTask3() {
+    }
+
+    public static void run() {
+            System.out.println("--- Демонстраційний сценарій Завдання 3 ---");
+
+            Equipment ledPanel = new LedPanel();
+            Equipment lcdScreen = new LcdScreen();
+
+            FlightBoard departureBoard = new DepartureBoard(ledPanel);
+            departureBoard.show();
+
+            departureBoard.setEquipment(lcdScreen);
+            departureBoard.show();
+
+            System.out.println("-------------------------------------------");
+
+
+            Equipment mobileApp = new MobileApp();
+            FlightBoard gateBoard = new GateBoard(mobileApp);
+            gateBoard.show();
+
+            System.out.println("-------------------------------------------");
+
+
+            Equipment projector = new Projector();
+            FlightBoard arrivalBoard = new ArrivalBoard(projector);
+            arrivalBoard.show();
+
+        }
+    }
