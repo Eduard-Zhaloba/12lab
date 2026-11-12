@@ -1,0 +1,17 @@
+org\example\task1\BaggageCompartment.class
+org\example\task2\SeatClassData.class
+org\example\task2\SeatClassFactory.class
+org\example\task2\FlightCabin.class
+org\example\task1\Aircraft.class
+org\example\task1\Suitcase.class
+org\example\task2\Task2Demo.class
+org\example\task2\SeatClass.class
+org\example\task1\Pallet.class
+org\example\task1\CargoContainer.class
+org\example\task1\CargoGroup.class
+org\example\task1\Cargo.class
+org\example\task2\SeatClassFactory$1.class
+org\example\task1\AbstractCargo.class
+org\example\task1\Parcel.class
+org\example\task2\Seat.class
+org\example\task1\Task1Demo.class
