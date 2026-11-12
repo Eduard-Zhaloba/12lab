@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.task1.Task1Demo;
+import org.example.task2.Task2Demo;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class Main {
     }
 
     public static void runTask2() {
-        // Код виклику Task2Demo додамо після перевірки файлів
+        Task2Demo.run();
     }
 
     public static void runTask3() {

@@ -1,5 +1,7 @@
 package org.example.task2;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
@@ -41,6 +43,7 @@ public final class Seat {
             throw new IllegalArgumentException("Ім'я пасажира не може бути порожнім");
         }
         this.passenger = passenger.trim();
+        log("Пасажира '" + this.passenger + "' призначено на місце " + getSeatCode());
     }
 
     public SeatClassData getSharedData() {
@@ -63,5 +66,10 @@ public final class Seat {
                 passenger == null ? "не призначений" : passenger,
                 sharedData.describe()
         );
+    }
+
+    private void log(String event) {
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.printf("[%s] [Seat] %s%n", time, event);
     }
 }

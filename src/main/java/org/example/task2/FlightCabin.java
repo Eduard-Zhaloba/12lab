@@ -1,5 +1,7 @@
 package org.example.task2;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,11 +22,10 @@ public final class FlightCabin {
         }
         this.flightNumber = flightNumber;
         createSeatMap(factory);
+        log("Сформовано схему салону для рейсу " + flightNumber + " (" + seats.size() + " місць)");
     }
 
     private void createSeatMap(SeatClassFactory factory) {
-        // 30 рядів по 6 місць = 180 місць.
-        // Перші 4 ряди: бізнес-клас (24 місця), решта: економ (156 місць).
         SeatClassData businessData = factory.getSeatClassData(SeatClass.BUSINESS);
         SeatClassData economyData = factory.getSeatClassData(SeatClass.ECONOMY);
 
@@ -51,5 +52,10 @@ public final class FlightCabin {
                 .orElseThrow(() -> new IllegalArgumentException(
                         "Місце не знайдено: " + row + letter
                 ));
+    }
+
+    private void log(String event) {
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.printf("[%s] [FlightCabin] %s%n", time, event);
     }
 }

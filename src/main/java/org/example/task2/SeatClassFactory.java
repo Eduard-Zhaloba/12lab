@@ -1,5 +1,7 @@
 package org.example.task2;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,7 @@ public final class SeatClassFactory {
     }
 
     private SeatClassData createSeatClassData(SeatClass seatClass) {
+        log("Створення нового спільного об'єкта даних для класу: " + seatClass);
         return switch (seatClass) {
             case ECONOMY -> new SeatClassData(
                     SeatClass.ECONOMY,
@@ -40,5 +43,10 @@ public final class SeatClassFactory {
 
     public Map<SeatClass, SeatClassData> getCreatedObjects() {
         return Map.copyOf(sharedData);
+    }
+
+    private void log(String event) {
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.printf("[%s] [SeatClassFactory] %s%n", time, event);
     }
 }
